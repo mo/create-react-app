@@ -92,6 +92,7 @@ module.exports = function(proxy, allowedHost) {
     proxy,
     before(app, server) {
       if (fs.existsSync(paths.proxySetup)) {
+        require('@babel/register');
         // This registers user provided middleware for proxy reasons
         require(paths.proxySetup)(app);
       }
